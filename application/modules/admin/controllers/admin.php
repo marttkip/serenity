@@ -29,7 +29,6 @@ class Admin extends MX_Controller
 	*/
 	public function dashboard() 
 	{
-		
 		$branch_id = $this->session->userdata('branch_id');
 		$branch_name = $this->session->userdata('branch_name');
 		$branches = $this->branches_model->all_branches();
@@ -100,10 +99,11 @@ class Admin extends MX_Controller
         $data["links"] = $this->pagination->create_links();
 		$query = $this->payroll_model->get_all_payrolls($table, $where, $config["per_page"], $page, $order='payroll.month_id', $order_method = 'DESC');
 		
-		
-		
 		$data['title'] = $v_data['title'] = $title;
-		
+		$personnel_id = $this->session->userdata('personnel_id');
+		$v_data['leave'] = $this->personnel_model->get_personnel_leave($personnel_id);
+		$v_data['leave_types'] = $this->personnel_model->get_leave_types();
+		$v_data['personnel_query'] = $this->personnel_model->get_personnel($personnel_id);
 		$v_data['month'] = $this->payroll_model->get_months();
 		$v_data['query'] = $query;
 		$v_data['page'] = $page;

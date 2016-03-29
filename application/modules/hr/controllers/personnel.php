@@ -158,8 +158,8 @@ class Personnel extends hr
 		$v_data['emergency_contacts'] = $this->personnel_model->get_emergency_contacts($personnel_id);
 		$v_data['dependants'] = $this->personnel_model->get_personnel_dependants($personnel_id);
 		$v_data['jobs'] = $this->personnel_model->get_personnel_jobs($personnel_id);
-		$v_data['leave'] = $this->personnel_model->get_personnel_leave($personnel_id);
 		$v_data['roles'] = $this->personnel_model->get_personnel_roles($personnel_id);
+		$v_data['leave'] = $this->personnel_model->get_personnel_leave($personnel_id);
 		$v_data['leave_types'] = $this->personnel_model->get_leave_types();
 		$v_data['departments'] = $this->personnel_model->get_departments();
 		$v_data['personnel_types'] = $this->personnel_model->get_personnel_types();

@@ -16193,7 +16193,6 @@ html .fc {
 }
 
 .fc-header-right {
-	width: 99%;
 	text-align: right;
 }
 
@@ -16582,7 +16581,7 @@ table.fc-border-separate {
 
 /* Fullcalendar - header */
 .fc .fc-header-center {
-	display: none;
+	/*display: none;*/
 }
 .fc .fc-widget-header {
 	background: #0088cc;

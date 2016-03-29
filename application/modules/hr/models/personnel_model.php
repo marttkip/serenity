@@ -468,11 +468,24 @@ class Personnel_model extends CI_Model
 		
 		return $query;
 	}
+	
 	public function get_personnel_leave($personnel_id)
 	{
 		//retrieve all users
 		$this->db->from('leave_duration, leave_type');
-		$this->db->select('leave_duration.*, leave_type.leave_type_name');
+		$this->db->select('leave_duration.*, leave_type.leave_type_name, leave_type.leave_type_count, leave_type.leave_days');
+		$this->db->order_by('leave_type.leave_type_name');
+		$this->db->where('leave_duration.leave_type_id = leave_type.leave_type_id AND leave_duration.personnel_id = '.$personnel_id);
+		$query = $this->db->get();
+		
+		return $query;
+	}
+	
+	public function get_leave_balance($personnel_id, $leave_type_id)
+	{
+		//retrieve all users
+		$this->db->from('leave_duration, leave_type');
+		$this->db->select('leave_duration.*, leave_type.leave_type_name, leave_type.leave_type_count, leave_type.leave_days');
 		$this->db->order_by('leave_type.leave_type_name');
 		$this->db->where('leave_duration.leave_type_id = leave_type.leave_type_id AND leave_duration.personnel_id = '.$personnel_id);
 		$query = $this->db->get();
